@@ -19,10 +19,8 @@ body {
 }
 
 .board {
-  width: 315px;
+  width: 320px;
   overflow: hidden;
-  border-top: 5px solid;
-  border-right: 5px solid;
 }
 
 .tile {
@@ -38,3 +36,7 @@ body {
 .tile svg {
   z-index: -1;
 }
+
+.border-top {border-top: 5px solid}
+
+.border-right {border-right: 5px solid}
