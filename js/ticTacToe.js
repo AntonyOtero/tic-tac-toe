@@ -45,13 +45,14 @@ const controller = (() => {
       [board.memory[6], board.memory[7], board.memory[8]],
     ]
 
-    return winConditions
+    let testResults = winConditions
       .map((arr) => {
         return arr
           .map(value => value == piece)
           .reduce((preBool, curBool) => preBool && curBool)
       })
-      .reduce((preBool, curBool) => preBool || curBool)
+    
+    return testResults.indexOf(true) > -1
   }
 
   const isDraw = (isWinner) => {
