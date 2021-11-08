@@ -1,7 +1,7 @@
 :root {
-  --color-main: #f3d7dd;
-  --color-accent: #44515b;
-  --border-width: 5px;
+  --color-main: #323544;
+  --color-accent: #fab379;
+  --border-width: 2px;
 }
 
 body {
@@ -21,8 +21,8 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 318px;
-  border: 3px solid;
+  width: calc((100px + 2px * 2) * 3);
+  border: var(--border-width) solid #242630;
 }
 
 .tile {
@@ -30,7 +30,7 @@ body {
   place-items: center;
   width: 100px;
   height: 100px;
-  border: 3px solid;
+  border: var(--border-width) solid #242630;
 }
 
 .tile svg {
