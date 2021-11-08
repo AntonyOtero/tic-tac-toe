@@ -25,8 +25,7 @@ const board = (() => {
   }
 })()
 
-// Control game logic
-// turns, wins/draws
+// Control game logic, turns, wins/draws
 const controller = (() => {
   const elem_board = document.querySelector('.board')
   const playerOne = Player('p1', 'X')
