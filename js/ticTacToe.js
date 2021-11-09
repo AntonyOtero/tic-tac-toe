@@ -27,9 +27,10 @@ const board = (() => {
 
 // Control game logic, turns, wins/draws
 const controller = (() => {
+  const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
-  const playerOne = Player('p1', 'X')
-  const playerTwo = Player('p2', 'O')
+  const playerOne = Player(usernames[0].value, 'X')
+  const playerTwo = Player(usernames[1].value, 'O')
   let currentPlayer = playerOne
 
   const isWin = (piece) => {
@@ -74,7 +75,7 @@ const controller = (() => {
       } else if (isDraw(winner)) {
         console.log(`It's a draw!`)
       } else {
-        currentPlayer = (currentPlayer.name == 'p1')
+        currentPlayer = (currentPlayer.piece == 'X')
           ? playerTwo
           : playerOne
       }

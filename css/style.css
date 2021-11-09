@@ -1,14 +1,28 @@
 :root {
   --color-main: #DFE3FC;
   --color-accent: #31313F;
+  --color-highlight: #fab379;
   --border-width: 2px;
 }
 
 body {
   margin: 0;
   height: 100vh;
+  font-size: 18px;
+  font-family: 'Comfortaa', cursive;
   background-color: var(--color-main);
-  color: var(--color-accent)
+  color: var(--color-accent);
+}
+
+.select-names input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+}
+
+.select-names input:focus {
+  border-color: var(--color-highlight);
 }
 
 .game {
