@@ -40,6 +40,7 @@ const controller = (() => {
   const select_names = document.querySelector('.select-names')
   const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
+  const match_results = document.querySelector('.results')
   let playerOne = Player(usernames[0].value, 'X')
   let playerTwo = Player(usernames[1].value, 'O')
   let currentPlayer = playerOne
@@ -89,10 +90,10 @@ const controller = (() => {
       board.update(targetElem, targetIndex, currentPiece, currentIcon)
       if (isWin(currentPiece)) {
         winner = true
-        console.log(`${currentPlayer.name} Wins!`)
+        match_results.innerHTML = `${currentPlayer.name} Wins!`
         restartGame()
       } else if (isDraw(winner)) {
-        console.log(`It's a draw!`)
+        match_results.innerHTML = `It's a draw!`
         restartGame()
       } else {
         currentPlayer = (currentPlayer.piece == 'X')
@@ -112,6 +113,7 @@ const controller = (() => {
       start_button.dataset.phase = 'start'
       start_button.classList.add('not-visible')
       board.clear(elem_board)
+      match_results.innerHTML = ''
     }
   })
 
