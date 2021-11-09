@@ -15,6 +15,7 @@ body {
 }
 
 header {
+  padding-top: 14px;
   position: absolute;
   width: 100%;
   top: 0;
@@ -22,7 +23,12 @@ header {
   text-align: center;
 }
 
+h1 {
+  font-size: 2.5rem;
+}
+
 .select-names input {
+  margin-top: 12px;
   background: none;
   border: none;
   border-bottom: 2px solid;
@@ -45,7 +51,7 @@ header {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: calc((100px + 2px * 2) * 3);
+  width: 304px;
   border: var(--border-width) solid;
 }
 
@@ -81,6 +87,8 @@ header {
 }
 
 .btn {
+  font-size: .9rem;
+  text-align: center;
   width: 200px;
   padding: 20px 40px;
   background-color: var(--color-accent);
