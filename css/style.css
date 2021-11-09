@@ -88,14 +88,15 @@ h1 {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 48px;
+  bottom: 10vh;
 }
+
 
 .btn {
   font-size: .9rem;
   text-align: center;
   width: 200px;
-  padding: 20px 40px;
+  padding: 20px 24px;
   background-color: var(--color-accent);
   color: var(--color-main);
   border: none;
@@ -110,6 +111,22 @@ h1 {
 
 .start-btn {
   margin-right: 12px;
+}
+
+@media (max-width: 428px){
+  .btn-group {
+    flex-direction: column;
+    bottom: 1vh;
+  }
+
+  .btn {
+    width: 90vw;
+    margin: 0;
+  }
+
+  .back-btn {
+    margin-top: 6px;
+  }
 }
 
 /* Utilities */
