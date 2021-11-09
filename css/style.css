@@ -50,3 +50,9 @@ body {
 .tile svg {
   z-index: -1;
 }
+
+/* Utilities */
+.not-visible {
+  display: none;
+  /* visibility: hidden; */
+}
