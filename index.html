@@ -11,17 +11,17 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <header>
+    <h1 class="logo">Tic-Tac-Toe</h1>
+    </nav>
+  </header>
   <main class="game">
-    <header>
-      <h1 class="logo">Tic-Tac-Toe</h1>
-      </nav>
-    </header>
     <div class="select-names">
       Enter Your Usernames
       <p>Player 1 is <input type="text" placeholder="Enter here..." autofocus> as X</p>
       <p>Player 2 is <input type="text" placeholder="Enter here..."> as O</p>
     </div>
-    <div class="board">
+    <div class="board not-visible">
       <div class="tile" data-index="0"></div>
       <div class="tile" data-index="1"></div>
       <div class="tile" data-index="2"></div>
@@ -32,6 +32,7 @@
       <div class="tile" data-index="7"></div>
       <div class="tile" data-index="8"></div>
     </div>
+    <button class="start-btn" data-phase="start">Start Game</button>
   </main>
   <script src="js/ticTacToe.js"></script>
 </body>
