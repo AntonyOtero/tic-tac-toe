@@ -15,6 +15,10 @@ body {
 }
 
 header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
   text-align: center;
 }
 
@@ -55,7 +59,21 @@ header {
   z-index: -1;
 }
 
+.results {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 24px 0;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  background: var(--color-accent);
+  color: var(--color-main);
+}
+
 .start-btn {
+  position: absolute;
+  bottom: 48px;
   padding: 20px 40px;
   background-color: var(--color-accent);
   color: var(--color-main);

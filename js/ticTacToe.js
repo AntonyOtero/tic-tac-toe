@@ -40,12 +40,14 @@ const controller = (() => {
   const select_names = document.querySelector('.select-names')
   const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
+  const match_results = document.querySelector('.results')
   let playerOne = Player(usernames[0].value, 'X')
   let playerTwo = Player(usernames[1].value, 'O')
   let currentPlayer = playerOne
   let winner = false
 
   const restartGame = () => {
+    match_results.classList.remove('not-visible')
     start_button.classList.remove('not-visible')
     start_button.innerText = 'Restart Match'
     start_button.dataset.phase = 'restart'
@@ -89,10 +91,10 @@ const controller = (() => {
       board.update(targetElem, targetIndex, currentPiece, currentIcon)
       if (isWin(currentPiece)) {
         winner = true
-        console.log(`${currentPlayer.name} Wins!`)
+        match_results.innerHTML = `${currentPlayer.name} Wins!`
         restartGame()
       } else if (isDraw(winner)) {
-        console.log(`It's a draw!`)
+        match_results.innerHTML = `It's a draw!`
         restartGame()
       } else {
         currentPlayer = (currentPlayer.piece == 'X')
@@ -106,12 +108,15 @@ const controller = (() => {
     if(start_button.dataset.phase == 'start') {
       select_names.classList.add('not-visible')
       start_button.classList.add('not-visible')
+      match_results.classList.add('not-visible')
       elem_board.classList.remove('not-visible')
     } else if(start_button.dataset.phase == 'restart') {
       winner = false
       start_button.dataset.phase = 'start'
+      match_results.classList.add('not-visible')
       start_button.classList.add('not-visible')
       board.clear(elem_board)
+      match_results.innerHTML = ''
     }
   })
 
