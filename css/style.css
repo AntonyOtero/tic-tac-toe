@@ -1,14 +1,28 @@
 :root {
-  --color-main: #f3d7dd;
-  --color-accent: #44515b;
-  --border-width: 5px;
+  --color-main: #DFE3FC;
+  --color-accent: #31313F;
+  --color-highlight: #fab379;
+  --border-width: 2px;
 }
 
 body {
   margin: 0;
   height: 100vh;
+  font-size: 18px;
+  font-family: 'Comfortaa', cursive;
   background-color: var(--color-main);
-  color: var(--color-accent)
+  color: var(--color-accent);
+}
+
+.select-names input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid;
+  outline: none;
+}
+
+.select-names input:focus {
+  border-color: var(--color-highlight);
 }
 
 .game {
@@ -21,8 +35,8 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
-  width: 318px;
-  border: 3px solid;
+  width: calc((100px + 2px * 2) * 3);
+  border: var(--border-width) solid;
 }
 
 .tile {
@@ -30,7 +44,7 @@ body {
   place-items: center;
   width: 100px;
   height: 100px;
-  border: 3px solid;
+  border: var(--border-width) solid;
 }
 
 .tile svg {
