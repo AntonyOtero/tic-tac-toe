@@ -55,6 +55,19 @@ header {
   z-index: -1;
 }
 
+.phases {
+  padding: 20px 40px;
+  background-color: var(--color-accent);
+  color: var(--color-main);
+  border: none;
+  border-radius: 5px;
+}
+
+.phases:hover {
+  background-color: var(--color-highlight);
+  color: var(--color-accent);
+}
+
 /* Utilities */
 .not-visible {
   display: none;
