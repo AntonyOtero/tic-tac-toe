@@ -28,6 +28,7 @@ header {
   border-bottom: 2px solid;
   border-radius: none;
   outline: none;
+  /* box-shadow: none; */
 }
 
 .select-names input:focus {
