@@ -27,11 +27,24 @@ const board = (() => {
 
 // Control game logic, turns, wins/draws
 const controller = (() => {
+  const start_button = document.querySelector('.start-btn')
+  const select_names = document.querySelector('.select-names')
   const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
-  const playerOne = Player(usernames[0].value, 'X')
-  const playerTwo = Player(usernames[1].value, 'O')
-  let currentPlayer = playerOne
+  let playerOne
+  let playerTwo
+  let currentPlayer
+
+  start_button.addEventListener('click', () => {
+    playerOne = Player(usernames[0].value, 'X')
+    playerTwo = Player(usernames[1].value, 'O')
+    select_names.classList.toggle('not-visible')
+    start_button.classList.toggle('not-visible')
+    elem_board.classList.toggle('not-visible')
+    currentPlayer = playerOne
+    console.log(playerOne.name, playerTwo.name)
+  })
+
 
   const isWin = (piece) => {
     let winConditions = [
