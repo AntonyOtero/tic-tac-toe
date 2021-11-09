@@ -26,6 +26,7 @@ header {
   background: none;
   border: none;
   border-bottom: 2px solid;
+  border-radius: none;
   outline: none;
 }
 
@@ -71,9 +72,15 @@ header {
   color: var(--color-main);
 }
 
-.start-btn {
+.btn-group {
+  display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 48px;
+}
+
+.btn {
+  width: 200px;
   padding: 20px 40px;
   background-color: var(--color-accent);
   color: var(--color-main);
@@ -81,9 +88,14 @@ header {
   border-radius: 5px;
 }
 
-.start-btn:hover {
+
+.btn:hover {
   background-color: var(--color-highlight);
   color: var(--color-accent);
+}
+
+.start-btn {
+  margin-right: 12px;
 }
 
 /* Utilities */

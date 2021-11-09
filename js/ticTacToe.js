@@ -37,6 +37,7 @@ const board = (() => {
 // Control game logic, turns, wins/draws
 const controller = (() => {
   const start_button = document.querySelector('.start-btn')
+  const back_button = document.querySelector('.back-btn')
   const select_names = document.querySelector('.select-names')
   const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
@@ -52,6 +53,17 @@ const controller = (() => {
     start_button.innerText = 'Restart Match'
     start_button.dataset.phase = 'restart'
     currentPlayer = playerOne
+  }
+
+  const changeUsers = () => {
+    winner = false
+    match_results.classList.add('not-visible')
+    start_button.classList.remove('not-visible')
+    start_button.innerText = 'Start Match'
+    start_button.dataset.phase = 'start'
+    select_names.classList.remove('not-visible')
+    elem_board.classList.add('not-visible')
+    back_button.classList.add('not-visible')
   }
 
   const isWin = (piece) => {
@@ -98,6 +110,7 @@ const controller = (() => {
       if (isWin(currentPiece)) {
         winner = true
         match_results.innerHTML = `${currentPlayer.name} Wins!`
+        back_button.classList.remove('not-visible')
         restartGame()
       } else if (isDraw(winner)) {
         match_results.innerHTML = `It's a draw!`
@@ -112,19 +125,25 @@ const controller = (() => {
 
   start_button.addEventListener('click', () => {
     if(start_button.dataset.phase == 'start') {
+      playerOne.name = usernames[0].value
+      playerTwo.name = usernames[1].value
       select_names.classList.add('not-visible')
       start_button.classList.add('not-visible')
       match_results.classList.add('not-visible')
       elem_board.classList.remove('not-visible')
+      board.clear(elem_board)
     } else if(start_button.dataset.phase == 'restart') {
       winner = false
       start_button.dataset.phase = 'start'
       match_results.classList.add('not-visible')
       start_button.classList.add('not-visible')
+      back_button.classList.add('not-visible')
       board.clear(elem_board)
       match_results.innerHTML = ''
     }
   })
+
+  back_button.addEventListener('click', changeUsers)
 
   return {
     start_button,
