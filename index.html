@@ -18,7 +18,7 @@
   <main class="game">
     <div class="select-names">
       Enter Your Usernames
-      <p>Player 1 is <input type="text" placeholder="Enter here..." autofocus> as X</p>
+      <p>Player 1 is <input type="text" placeholder="Enter here..."> as X</p>
       <p>Player 2 is <input type="text" placeholder="Enter here..."> as O</p>
     </div>
     <div class="results not-visible"></div>
@@ -33,7 +33,10 @@
       <div class="tile" data-index="7"></div>
       <div class="tile" data-index="8"></div>
     </div>
-    <button class="start-btn" data-phase="start">Start Game</button>
+    <div class="btn-group">
+      <button class="btn start-btn" data-phase="start">Start Game</button>
+      <button class="btn back-btn not-visible" data-phase="naming">Change Names</button>
+    </div>
   </main>
   <script src="js/ticTacToe.js"></script>
 </body>
