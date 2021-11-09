@@ -34,6 +34,7 @@ const controller = (() => {
   let playerOne
   let playerTwo
   let currentPlayer
+  let winner = false
 
   start_button.addEventListener('click', () => {
     playerOne = Player(usernames[0].value, 'X')
@@ -73,14 +74,13 @@ const controller = (() => {
   }
 
   elem_board.addEventListener('click', (e) => {
-    console.log(e.target)
+    // console.log(e.target)
     let targetElem = e.target
     let targetIndex = targetElem.dataset.index
     let currentPiece = currentPlayer.piece
     let currentIcon = currentPlayer.icon
-    let winner = false
     
-    if (!board.memory[targetIndex]) {
+    if (!board.memory[targetIndex] && winner !== true) {
       board.update(targetElem, targetIndex, currentPiece, currentIcon)
       if (isWin(currentPiece)) {
         winner = true
