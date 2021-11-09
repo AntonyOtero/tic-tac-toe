@@ -56,23 +56,30 @@ const controller = (() => {
 
   const isWin = (piece) => {
     let winConditions = [
-      [board.memory[0], board.memory[1], board.memory[2]],
-      [board.memory[0], board.memory[4], board.memory[8]],
-      [board.memory[0], board.memory[3], board.memory[6]],
-      [board.memory[1], board.memory[4], board.memory[7]],
-      [board.memory[3], board.memory[4], board.memory[5]],
-      [board.memory[6], board.memory[4], board.memory[2]],
-      [board.memory[2], board.memory[5], board.memory[8]],
-      [board.memory[6], board.memory[7], board.memory[8]],
+      [0, 1, 2],
+      [0, 4, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [3, 4, 5],
+      [6, 4, 2],
+      [2, 5, 8],
+      [6, 7, 8],
     ]
 
     let testResults = winConditions
       .map((arr) => {
         return arr
-          .map(value => value == piece)
+          .map(value => board.memory[value] == piece)
           .reduce((preBool, curBool) => preBool && curBool)
       })
-    
+
+    let tiles = [...elem_board.children]
+    if(testResults.indexOf(true) > -1) {
+      winConditions[testResults.indexOf(true)].forEach( n => {
+        tiles[n].lastChild.style.color = "var(--color-highlight)"
+      })
+    }
+
     return testResults.indexOf(true) > -1
   }
 
@@ -86,7 +93,6 @@ const controller = (() => {
     let targetIndex = targetElem.dataset.index
     let currentPiece = currentPlayer.piece
     let currentIcon = currentPlayer.icon
-    
     if (!board.memory[targetIndex] && winner !== true) {
       board.update(targetElem, targetIndex, currentPiece, currentIcon)
       if (isWin(currentPiece)) {
