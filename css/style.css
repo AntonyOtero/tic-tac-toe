@@ -55,6 +55,15 @@ header {
   z-index: -1;
 }
 
+.results {
+  padding: 24px;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  background: var(--color-accent);
+  color: var(--color-main);
+}
+
 .start-btn {
   padding: 20px 40px;
   background-color: var(--color-accent);
