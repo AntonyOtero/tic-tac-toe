@@ -55,7 +55,7 @@ header {
   z-index: -1;
 }
 
-.phases {
+.start-btn {
   padding: 20px 40px;
   background-color: var(--color-accent);
   color: var(--color-main);
@@ -63,7 +63,7 @@ header {
   border-radius: 5px;
 }
 
-.phases:hover {
+.start-btn:hover {
   background-color: var(--color-highlight);
   color: var(--color-accent);
 }
