@@ -47,6 +47,7 @@ const controller = (() => {
   let winner = false
 
   const restartGame = () => {
+    match_results.classList.remove('not-visible')
     start_button.classList.remove('not-visible')
     start_button.innerText = 'Restart Match'
     start_button.dataset.phase = 'restart'
@@ -107,10 +108,12 @@ const controller = (() => {
     if(start_button.dataset.phase == 'start') {
       select_names.classList.add('not-visible')
       start_button.classList.add('not-visible')
+      match_results.classList.add('not-visible')
       elem_board.classList.remove('not-visible')
     } else if(start_button.dataset.phase == 'restart') {
       winner = false
       start_button.dataset.phase = 'start'
+      match_results.classList.add('not-visible')
       start_button.classList.add('not-visible')
       board.clear(elem_board)
       match_results.innerHTML = ''
