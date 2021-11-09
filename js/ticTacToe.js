@@ -12,16 +12,25 @@ const Player = (name, piece) => {
 
 // Update Board, track moves, prevent replacement
 const board = (() => {
-  const memory = new Array(9).fill('')
+  let memory = new Array(9).fill('')
 
   const update = (target, i, piece, icon) => {
     memory[i] = piece 
     target.innerHTML = icon
   }
 
+  const clear = (gameboard) => {
+    let tiles = [...gameboard.children]
+    tiles.forEach( (elem, i) => {
+      elem.innerHTML = ''
+      memory[i] = ''
+    })
+  }
+
   return {
     memory,
-    update
+    update,
+    clear
   }
 })()
 
@@ -31,21 +40,17 @@ const controller = (() => {
   const select_names = document.querySelector('.select-names')
   const usernames = document.querySelectorAll('.select-names input')
   const elem_board = document.querySelector('.board')
-  let playerOne
-  let playerTwo
-  let currentPlayer
+  let playerOne = Player(usernames[0].value, 'X')
+  let playerTwo = Player(usernames[1].value, 'O')
+  let currentPlayer = playerOne
   let winner = false
 
-  start_button.addEventListener('click', () => {
-    playerOne = Player(usernames[0].value, 'X')
-    playerTwo = Player(usernames[1].value, 'O')
-    select_names.classList.toggle('not-visible')
-    start_button.classList.toggle('not-visible')
-    elem_board.classList.toggle('not-visible')
+  const restartGame = () => {
+    start_button.classList.remove('not-visible')
+    start_button.innerText = 'Restart Match'
+    start_button.dataset.phase = 'restart'
     currentPlayer = playerOne
-    console.log(playerOne.name, playerTwo.name)
-  })
-
+  }
 
   const isWin = (piece) => {
     let winConditions = [
@@ -85,8 +90,10 @@ const controller = (() => {
       if (isWin(currentPiece)) {
         winner = true
         console.log(`${currentPlayer.name} Wins!`)
+        restartGame()
       } else if (isDraw(winner)) {
         console.log(`It's a draw!`)
+        restartGame()
       } else {
         currentPlayer = (currentPlayer.piece == 'X')
           ? playerTwo
@@ -95,7 +102,21 @@ const controller = (() => {
     }
   })
 
+  start_button.addEventListener('click', () => {
+    if(start_button.dataset.phase == 'start') {
+      select_names.classList.add('not-visible')
+      start_button.classList.add('not-visible')
+      elem_board.classList.remove('not-visible')
+    } else if(start_button.dataset.phase == 'restart') {
+      winner = false
+      start_button.dataset.phase = 'start'
+      start_button.classList.add('not-visible')
+      board.clear(elem_board)
+    }
+  })
+
   return {
+    start_button,
     playerOne,
     playerTwo
   }
