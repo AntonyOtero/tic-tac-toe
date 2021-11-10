@@ -12,18 +12,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- HEADER -->
   <header>
     <h1 class="logo">Tic-Tac-Toe</h1>
-    </nav>
   </header>
+
+  <!-- GAME -->
   <main class="game">
-    <div class="select-names">
-      Enter Your Usernames
-      <p>Player 1 is <input type="text" placeholder="Enter here..."> as X</p>
-      <p>Player 2 is <input type="text" placeholder="Enter here..."> as O</p>
+    <!-- Usernames -->
+    <div class="usernames">
+      <h2>Enter Your Usernames :</h2>
+      <p>Player 1 is <input class="username" type="text" placeholder="Enter here..."> as X</p>
+      <p>Player 2 is <input class="username" type="text" placeholder="Enter here..."> as O</p>
     </div>
-    <div class="results not-visible"></div>
-    <div class="board not-visible">
+    <!-- Results -->
+    <div class="results not-visible">Antony Wins!</div>
+    <!-- Gameboard -->
+    <div class="gameboard not-visible">
       <div class="tile" data-index="0"></div>
       <div class="tile" data-index="1"></div>
       <div class="tile" data-index="2"></div>
@@ -34,11 +39,14 @@
       <div class="tile" data-index="7"></div>
       <div class="tile" data-index="8"></div>
     </div>
-    <div class="btn-group">
-      <button class="btn start-btn" data-phase="start">Start Game</button>
-      <button class="btn back-btn not-visible" data-phase="naming">Change Names</button>
+    <!-- Options -->
+    <div class="options">
+      <button class="btn start" data-phase="start">Start Game</button><!--
+      --><button class="btn back not-visible" data-phase="naming">Change Names</button>
     </div>
   </main>
+
+  <!-- Scripts -->
   <script src="js/ticTacToe.js"></script>
 </body>
 </html>
