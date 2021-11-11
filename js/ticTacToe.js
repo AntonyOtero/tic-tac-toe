@@ -125,6 +125,7 @@ const displayController = (() => {
 
   const clearBoard = () => {
     tiles.forEach((tile, i) => {
+      tile.classList.remove("disabled")
       gameboard.removeFromMemory(i)
       tile.innerHTML = ''
     })
@@ -176,27 +177,29 @@ const displayController = (() => {
           selectedTile.dataset.index,
           currentPlayer.symbol,
           currentPlayer.token
-        )
+          )
+
+          tile.classList.add("disabled")
+
+          let winResults = gameboard.checkWin(currentPlayer.symbol, tiles)
+          let isWin = Boolean(winResults)
+          let isDraw = gameboard.checkDraw(currentPlayer.symbol, tiles)
+
+          if(isWin) {
+            let currentName = (currentPlayer.name) ? 
+              currentPlayer.name :
+              currentPlayer.symbol
+            results_component.innerHTML = `${currentName} wins!`
+            toggleDisplay(resultsDisplay)
+            board_component.classList.add("disabled")
+            highlightWin(winResults)
+          } else if(isDraw) {
+            results_component.innerHTML = `It's a draw!`
+            toggleDisplay(resultsDisplay)
+          }
+
+          changeCurrentPlayer()
       }
-
-      let winResults = gameboard.checkWin(currentPlayer.symbol, tiles)
-      let isWin = Boolean(winResults)
-      let isDraw = gameboard.checkDraw(currentPlayer.symbol, tiles)
-
-      if(isWin) {
-        let currentName = (currentPlayer.name) ? 
-          currentPlayer.name :
-          currentPlayer.symbol
-        results_component.innerHTML = `${currentName} wins!`
-        board_component.classList.add("disabled")
-        highlightWin(winResults)
-        toggleDisplay(resultsDisplay)
-      } else if(isDraw) {
-        results_component.innerHTML = `It's a draw!`
-        toggleDisplay(resultsDisplay)
-      }
-
-      changeCurrentPlayer()
     })
   })
 
