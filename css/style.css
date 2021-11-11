@@ -128,10 +128,6 @@ footer a {
 
 @media (max-width: 428px){
 
-  .results {
-    top: 24px;
-  }
-
   .options {
     bottom: 48px;
   }
