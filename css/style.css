@@ -66,10 +66,7 @@ h1 {
   width: var(--tile-width);
   height: var(--tile-width);
   border: var(--border-width) solid;
-}
-
-.tile svg {
-  z-index: -1;
+  z-index: 2;
 }
 
 .results {
@@ -107,7 +104,8 @@ h1 {
   color: var(--color-accent);
 }
 
-.start {
+.start,
+.restart {
   margin-right: 12px;
 }
 
@@ -115,8 +113,12 @@ h1 {
 
 @media (max-width: 428px){
 
+  .results {
+    top: 24px;
+  }
+
   .options {
-    bottom: 0;
+    bottom: 48px;
   }
 
   .btn {
@@ -131,4 +133,8 @@ h1 {
 .not-visible {
   display: none;
   /* visibility: hidden; */
+}
+
+.disabled {
+  z-index: -1;
 }
